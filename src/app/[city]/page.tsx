@@ -1,4 +1,7 @@
+import AddOrRemove from '@/components/custom/add-remove';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ChevronLeft } from 'react-bootstrap-icons';
 
 type Params = {
   city: string;
@@ -31,7 +34,17 @@ export default async function Page({ params }: { params: Params }) {
   // https://openweathermap.org/weather-conditions
 
   return (
-    <div className="flex flex-col items-center gap-5 pt-5 text-xl">
+    <div className="flex flex-col items-center gap-5 text-xl">
+      <div className="flex items-center justify-between self-stretch">
+        <Link
+          href="/"
+          className="flex items-center rounded-full p-1 hover:text-gray-300"
+        >
+          <span className="sr-only">Home</span>
+          <ChevronLeft className="relative -left-0.5 size-7" />
+        </Link>
+        <AddOrRemove city={data.name} />
+      </div>
       <h1 className="text-4xl font-semibold">{data.name}</h1>
       <p className="text-6xl font-light">{data.main.temp.toFixed()}º</p>
       <p className="capitalize">{data.weather[0].description}</p>
