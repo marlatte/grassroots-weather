@@ -28,15 +28,16 @@ export default function CityCard({
           <p className="opacity-90">{currentTime}</p>
         </div>
         <p className="flex items-start text-5xl font-light">
-          {temp}
+          {temp.toFixed()}
           <span className="text-4xl">º</span>
         </p>
       </div>
       <div className="flex justify-between opacity-90">
         <p>{conditions}</p>
-        <p>
-          H:{high}º L:{low}º
-        </p>
+        <div className="flex gap-3">
+          <p>H: {high.toFixed()}º</p>
+          <p>L: {low.toFixed()}º</p>
+        </div>
       </div>
     </Card>
   );

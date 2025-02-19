@@ -2,39 +2,48 @@
 
 import useLocalStorage from 'use-local-storage';
 import CityCard from './city-card';
+import { useEffect, useState } from 'react';
 
 export default function CitiesList() {
-  const [citiesStored, setCitiesStored] = useLocalStorage('cities', '');
+  const [citiesLocal] = useLocalStorage('cities', '["London", "New York"]');
+  const [cityData, setCityData] = useState<{ data: OpenWeatherCity }[]>([]);
 
-  let cities: string[] = [];
-
-  try {
-    cities = JSON.parse(citiesStored);
-  } catch (err) {
-    console.error(err);
-  }
-
-  const handleSearch = () => {
-    try {
-      setCitiesStored(JSON.stringify(['London', 'New York']));
-    } catch (err) {
-      console.error(err);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchCities: string[] = JSON.parse(citiesLocal);
+        const responses = await Promise.all(
+          fetchCities.map((city) => fetch(`/api/${city}`)),
+        );
+        const allData = await Promise.all(
+          responses.map((response) => response.json()),
+        );
+        setCityData(allData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     }
-  };
+
+    fetchData();
+  }, [citiesLocal]);
 
   return (
     <div className="flex flex-col gap-6">
-      {cities.map((city) => (
-        <CityCard
-          key={city}
-          name={city}
-          conditions="Clouds"
-          temp={55}
-          high={60}
-          low={50}
-          secFromUTC={0}
-        />
-      ))}
+      {cityData.map((city) => {
+        const {
+          name,
+          main: { temp, temp_max: high, temp_min: low },
+          timezone: secFromUTC,
+          weather: [{ main: conditions }],
+        } = city.data;
+
+        return (
+          <CityCard
+            key={name}
+            {...{ name, temp, high, low, secFromUTC, conditions }}
+          />
+        );
+      })}
     </div>
   );
 }

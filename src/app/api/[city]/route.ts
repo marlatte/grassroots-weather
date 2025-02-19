@@ -8,12 +8,14 @@ export async function GET(request: Request, context: { params: Params }) {
 
   // ! Searching by city is deprecated.
   // TODO: Replace with Geocoder API, then search by coordinates.
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`,
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`,
   );
 
-  // TODO: Add error handling
+  if (!res.ok) {
+    throw new Error(`${res.status}: ${await res.text()}`);
+  }
 
-  const data = await response.json();
+  const data = await res.json();
   return Response.json({ data });
 }
