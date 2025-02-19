@@ -1,6 +1,15 @@
+import { notFound } from 'next/navigation';
+
 type Params = {
   city: string;
 };
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const { city } = params;
+  return {
+    title: `${decodeURIComponent(city)} | Weather`,
+  };
+}
 
 export default async function Page({ params }: { params: Params }) {
   const { city } = params;
@@ -9,7 +18,11 @@ export default async function Page({ params }: { params: Params }) {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`,
   );
   if (!res.ok) {
-    throw new Error(`${res.status}: ${await res.text()}`);
+    if (res.status === 404) {
+      notFound();
+    } else {
+      throw new Error(`${res.status}: ${await res.text()}`);
+    }
   }
 
   const data: OpenWeatherCity = await res.json();
