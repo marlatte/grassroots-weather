@@ -29,7 +29,7 @@ export default function SearchBar() {
         />
       </Label>
       {!!dropdownList.length && !dropdownList.includes(query) && (
-        <div className="absolute top-12 w-full pl-8">
+        <div className="absolute top-12 z-10 w-full pl-8">
           <div className="flex flex-col rounded-lg rounded-tl-none border border-gray-800 bg-gray-900 px-1 py-2 text-gray-300">
             {dropdownList.map((suggestion) => (
               <button

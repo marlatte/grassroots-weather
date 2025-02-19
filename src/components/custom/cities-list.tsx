@@ -3,6 +3,10 @@
 import useLocalStorage from 'use-local-storage';
 import CityCard from './city-card';
 import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
 
 export default function CitiesList() {
   const [citiesLocal] = useLocalStorage('cities', '["London", "New York"]');
@@ -27,6 +31,8 @@ export default function CitiesList() {
     fetchData();
   }, [citiesLocal]);
 
+  const NOW = dayjs().utc();
+
   return (
     <div className="flex flex-col gap-6">
       {cityData.map((city) => {
@@ -40,7 +46,7 @@ export default function CitiesList() {
         return (
           <CityCard
             key={name}
-            {...{ name, temp, high, low, secFromUTC, conditions }}
+            {...{ NOW, name, temp, high, low, secFromUTC, conditions }}
           />
         );
       })}
