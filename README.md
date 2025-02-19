@@ -10,6 +10,12 @@ Fork and clone this repo from GitHub to your local machine.
 npm install
 ```
 
+## Environment Variables
+
+```bash
+OPEN_WEATHER_API_KEY=""
+```
+
 ## Usage
 
 ```bash

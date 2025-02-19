@@ -13,7 +13,7 @@ export default function CitiesList() {
       try {
         const fetchCities: string[] = JSON.parse(citiesLocal);
         const responses = await Promise.all(
-          fetchCities.map((city) => fetch(`/api/${city}`)),
+          fetchCities.map((city) => fetch(`/api/current/${city}`)),
         );
         const allData = await Promise.all(
           responses.map((response) => response.json()),

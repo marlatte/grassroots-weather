@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 export default async function Page({ params }: { params: Params }) {
   const { city } = params;
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.OPEN_WEATHER_API_KEY;
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`,
   );

@@ -4,7 +4,7 @@ type Params = {
 
 export async function GET(request: Request, context: { params: Params }) {
   const { city } = context.params;
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.OPEN_WEATHER_API_KEY;
 
   // ! Searching by city is deprecated.
   // TODO: Replace with Geocoder API, then search by coordinates.
