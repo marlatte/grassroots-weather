@@ -152,7 +152,7 @@ const citiesDB = [
   'Luanda',
   'Bucharest',
   'Boston',
-  'Washington',
+  'Washington D.C.',
   'Atlanta',
 ];
 

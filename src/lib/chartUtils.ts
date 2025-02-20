@@ -10,6 +10,12 @@ export const chartColors = {
     fill: 'fill-blue-500',
     text: 'text-blue-500',
   },
+  blue_dark: {
+    bg: 'bg-blue-800',
+    stroke: 'stroke-blue-800',
+    fill: 'fill-blue-800',
+    text: 'text-blue-800',
+  },
   emerald: {
     bg: 'bg-emerald-500',
     stroke: 'stroke-emerald-500',
@@ -22,11 +28,29 @@ export const chartColors = {
     fill: 'fill-violet-500',
     text: 'text-violet-500',
   },
+  indigo: {
+    bg: 'bg-indigo-500',
+    stroke: 'stroke-indigo-500',
+    fill: 'fill-indigo-500',
+    text: 'text-indigo-500',
+  },
+  indigo_dark: {
+    bg: 'bg-indigo-700',
+    stroke: 'stroke-indigo-700',
+    fill: 'fill-indigo-700',
+    text: 'text-indigo-700',
+  },
   amber: {
     bg: 'bg-amber-500',
     stroke: 'stroke-amber-500',
     fill: 'fill-amber-500',
     text: 'text-amber-500',
+  },
+  yellow: {
+    bg: 'bg-yellow-500',
+    stroke: 'stroke-yellow-500',
+    fill: 'fill-yellow-500',
+    text: 'text-yellow-500',
   },
   gray: {
     bg: 'bg-gray-500',
@@ -67,12 +91,12 @@ export const chartColors = {
 export type AvailableChartColorsKeys = keyof typeof chartColors;
 
 export const AvailableChartColors: AvailableChartColorsKeys[] = Object.keys(
-  chartColors
+  chartColors,
 ) as Array<AvailableChartColorsKeys>;
 
 export const constructCategoryColors = (
   categories: string[],
-  colors: AvailableChartColorsKeys[]
+  colors: AvailableChartColorsKeys[],
 ): Map<string, AvailableChartColorsKeys> => {
   const categoryColors = new Map<string, AvailableChartColorsKeys>();
   categories.forEach((category, index) => {
@@ -83,7 +107,7 @@ export const constructCategoryColors = (
 
 export const getColorClassName = (
   color: AvailableChartColorsKeys,
-  type: ColorUtility
+  type: ColorUtility,
 ): string => {
   const fallbackColor = {
     bg: 'bg-gray-500',
@@ -99,9 +123,9 @@ export const getColorClassName = (
 export const getYAxisDomain = (
   autoMinValue: boolean,
   minValue: number | undefined,
-  maxValue: number | undefined
+  maxValue: number | undefined,
 ) => {
-  const minDomain = autoMinValue ? 'auto' : minValue ?? 0;
+  const minDomain = autoMinValue ? 'auto' : (minValue ?? 0);
   const maxDomain = maxValue ?? 'auto';
   return [minDomain, maxDomain];
 };
@@ -110,7 +134,7 @@ export const getYAxisDomain = (
 
 export function hasOnlyOneValueForKey(
   array: any[],
-  keyToCheck: string
+  keyToCheck: string,
 ): boolean {
   const val: any[] = [];
 

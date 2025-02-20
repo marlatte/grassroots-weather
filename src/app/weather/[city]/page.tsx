@@ -5,7 +5,7 @@ import HomeLink from '@/components/custom/home-link';
 import { appendCompareParam } from '@/lib/link-utils';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import WindSunHumidity from '@/components/custom/forecasts/wind-sun-humidity';
+import CurrentStats from '@/components/custom/forecasts/current-stats';
 
 type Params = {
   city: string;
@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: Params }) {
     }
   }
 
-  const data: OpenWeatherCity = await res.json();
+  const currentData: OpenWeatherCurrent = await res.json();
 
   // Find more assets (icons, etc.) for the UI here:
   // https://openweathermap.org/weather-conditions
@@ -43,18 +43,20 @@ export default async function Page({ params }: { params: Params }) {
         <div className="mb-6 flex items-center justify-between self-stretch">
           <BackBtn />
           <HomeLink />
-          <AddOrRemove city={data.name} />
+          <AddOrRemove city={currentData.name} />
         </div>
-        <h1 className="text-4xl font-semibold sm:text-5xl">{data.name}</h1>
+        <h1 className="text-4xl font-semibold sm:text-5xl">
+          {currentData.name}
+        </h1>
         <p className="flex text-6xl font-light">
           <span className="w-4" />
-          {data.main.temp.toFixed()}
+          {currentData.main.temp.toFixed()}
           <span className="text-4xl">º</span>
         </p>
-        <p className="capitalize">{data.weather[0].description}</p>
+        <p className="capitalize">{currentData.weather[0].description}</p>
         <div className="flex gap-4">
-          <p>H: {data.main.temp_max.toFixed()}º</p>
-          <p>L: {data.main.temp_min.toFixed()}º</p>
+          <p>H: {currentData.main.temp_max.toFixed()}º</p>
+          <p>L: {currentData.main.temp_min.toFixed()}º</p>
         </div>
       </section>
       <section className="mt-5 flex flex-col gap-2">
@@ -66,7 +68,7 @@ export default async function Page({ params }: { params: Params }) {
         </Link>
         <div className="flex flex-col gap-5">
           <SingleCityForecast />
-          <WindSunHumidity />
+          <CurrentStats data={currentData} />
         </div>
       </section>
     </div>

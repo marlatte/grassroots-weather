@@ -11,7 +11,7 @@ dayjs.extend(utc);
 
 export default function CitiesList() {
   const [citiesLocal] = useLocalStorage('cities', '[]');
-  const [cityData, setCityData] = useState<{ data: OpenWeatherCity }[]>([]);
+  const [cityData, setCityData] = useState<{ data: OpenWeatherCurrent }[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,7 +54,7 @@ export default function CitiesList() {
         })
       ) : (
         <div className="grid flex-1 place-content-center gap-3 pb-52">
-          <div className="animate-bounce flex justify-center">
+          <div className="flex animate-bounce justify-center">
             <ArrowUpCircle className="size-10 text-gray-300" />
           </div>
           <p className="text-balance text-lg sm:text-xl">

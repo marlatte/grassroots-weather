@@ -1,4 +1,4 @@
-type OpenWeatherCity = {
+type OpenWeatherCurrent = {
   coord: { lon: number; lat: number };
   weather: [
     {

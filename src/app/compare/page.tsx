@@ -12,8 +12,8 @@ export default async function Page({
 }) {
   const { a, b } = searchParams;
   const apiKey = process.env.OPEN_WEATHER_API_KEY;
-  let dataA: OpenWeatherCity | undefined;
-  let dataB: OpenWeatherCity | undefined;
+  let dataA: OpenWeatherCurrent | undefined;
+  let dataB: OpenWeatherCurrent | undefined;
 
   if (a) {
     const responseA = await fetch(
