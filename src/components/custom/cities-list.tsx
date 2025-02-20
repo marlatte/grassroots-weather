@@ -5,11 +5,12 @@ import CityCard from './city-card';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import { ArrowUpCircle } from 'react-bootstrap-icons';
 
 dayjs.extend(utc);
 
 export default function CitiesList() {
-  const [citiesLocal] = useLocalStorage('cities', '["London", "New York"]');
+  const [citiesLocal] = useLocalStorage('cities', '[]');
   const [cityData, setCityData] = useState<{ data: OpenWeatherCity }[]>([]);
 
   useEffect(() => {
@@ -34,22 +35,33 @@ export default function CitiesList() {
   const NOW = dayjs().utc();
 
   return (
-    <div className="flex flex-col gap-6">
-      {cityData.map((city) => {
-        const {
-          name,
-          main: { temp, temp_max: high, temp_min: low },
-          timezone: secFromUTC,
-          weather: [{ main: conditions }],
-        } = city.data;
+    <div className="flex flex-1 flex-col gap-6">
+      {cityData.length ? (
+        cityData.map((city) => {
+          const {
+            name,
+            main: { temp, temp_max: high, temp_min: low },
+            timezone: secFromUTC,
+            weather: [{ main: conditions }],
+          } = city.data;
 
-        return (
-          <CityCard
-            key={name}
-            {...{ NOW, name, temp, high, low, secFromUTC, conditions }}
-          />
-        );
-      })}
+          return (
+            <CityCard
+              key={name}
+              {...{ NOW, name, temp, high, low, secFromUTC, conditions }}
+            />
+          );
+        })
+      ) : (
+        <div className="grid flex-1 place-content-center gap-3 pb-52">
+          <div className="animate-bounce flex justify-center">
+            <ArrowUpCircle className="size-10 text-gray-300" />
+          </div>
+          <p className="text-balance text-lg sm:text-xl">
+            Add a city by searching for it.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

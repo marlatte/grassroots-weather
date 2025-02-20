@@ -3,14 +3,20 @@
 import { Input } from '@/components/tremor/input';
 import { Label } from '@/components/tremor/label';
 import { searchCities } from '@/db/mock-db';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '../tremor/button';
 import { ArrowRight } from 'react-bootstrap-icons';
+import { appendCompareParam, getWeatherLink } from '@/lib/link-utils';
 
-export default function SearchBar() {
+export default function SearchBar({
+  compareParam,
+}: {
+  compareParam?: CompareParam;
+}) {
   const [dropdownList, setDropdownList] = useState<string[]>([]);
   const [query, setQuery] = useState('');
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   const handleQueryChange = (q: string) => {
@@ -20,7 +26,11 @@ export default function SearchBar() {
   return (
     <form
       action={() => {
-        router.push(`/${encodeURIComponent(query)}`);
+        router.push(
+          compareParam
+            ? appendCompareParam(compareParam, query, searchParams)
+            : getWeatherLink(query),
+        );
       }}
       className="relative flex rounded-lg border border-gray-800"
     >

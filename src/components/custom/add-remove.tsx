@@ -14,12 +14,12 @@ function AddCity({
   return (
     <button
       type="button"
-      className="rounded-full bg-blue-800 hover:bg-blue-700"
+      className="rounded-full bg-blue-900 hover:bg-blue-800"
       value={city}
       {...{ onClick }}
     >
       <span className="sr-only">Add {city} to Home</span>
-      <Plus className="size-10" />
+      <Plus className="size-9" />
     </button>
   );
 }
@@ -34,11 +34,11 @@ function RemoveCity({
   return (
     <button
       type="button"
-      className="rounded-full bg-red-800 hover:bg-red-700"
+      className="rounded-full bg-red-900 hover:bg-red-800"
       {...{ onClick }}
     >
       <span className="sr-only">Remove {city} from Home</span>
-      <Dash className="size-10" />
+      <Dash className="size-9" />
     </button>
   );
 }

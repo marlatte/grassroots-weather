@@ -1,33 +1,51 @@
-import type { Dayjs } from 'dayjs';
-import { Card } from '../tremor/card';
-import Link from 'next/link';
-import { getWeatherLink } from '@/lib/link-utils';
+'use client';
 
-export default function CityCard({
-  NOW,
+import { cx } from '@/lib/tremorUtils';
+import { Card } from '../tremor/card';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { deleteCompareParam } from '@/lib/link-utils';
+
+dayjs.extend(utc);
+
+export default function CompareCard({
   name,
   temp,
   secFromUTC,
   conditions,
   high,
   low,
+  compareParam,
+  className,
 }: {
-  NOW: Dayjs;
   name: string;
   temp: number;
   secFromUTC: number;
   conditions: string;
   high: number;
   low: number;
+  compareParam: CompareParam;
+  className?: string;
 }) {
-  const localTime = NOW.add(secFromUTC, 's').format('h:mm A');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const localTime = dayjs().utc().add(secFromUTC, 's').format('h:mm A');
 
   return (
     <Card
-      className="flex h-32 flex-col justify-between p-4 text-base hover:bg-gray-900 focus:bg-gray-900"
+      className={cx(
+        'flex h-32 flex-col justify-between p-4 text-base hover:bg-gray-900',
+        className,
+      )}
       asChild
     >
-      <Link href={getWeatherLink(name)}>
+      <button
+        type="button"
+        onClick={() => {
+          router.push(deleteCompareParam(compareParam, searchParams));
+        }}
+      >
         <div className="flex justify-between">
           <div>
             <p className="mb-0.5 text-2xl font-semibold">{name}</p>
@@ -45,7 +63,7 @@ export default function CityCard({
             <p>L: {low.toFixed()}º</p>
           </div>
         </div>
-      </Link>
+      </button>
     </Card>
   );
 }

@@ -35,3 +35,5 @@ type OpenWeatherCity = {
   name: string;
   cod: number;
 };
+
+type CompareParam = 'a' | 'b';
