@@ -1,9 +1,11 @@
 import AddOrRemove from '@/components/custom/add-remove';
 import BackBtn from '@/components/custom/back-btn';
+import SingleCityForecast from '@/components/custom/forecasts/single-city';
 import HomeLink from '@/components/custom/home-link';
 import { appendCompareParam } from '@/lib/link-utils';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import WindSunHumidity from '@/components/custom/forecasts/wind-sun-humidity';
 
 type Params = {
   city: string;
@@ -44,21 +46,28 @@ export default async function Page({ params }: { params: Params }) {
           <AddOrRemove city={data.name} />
         </div>
         <h1 className="text-4xl font-semibold sm:text-5xl">{data.name}</h1>
-        <p className="text-6xl font-light">{data.main.temp.toFixed()}º</p>
+        <p className="flex text-6xl font-light">
+          <span className="w-4" />
+          {data.main.temp.toFixed()}
+          <span className="text-4xl">º</span>
+        </p>
         <p className="capitalize">{data.weather[0].description}</p>
         <div className="flex gap-4">
           <p>H: {data.main.temp_max.toFixed()}º</p>
           <p>L: {data.main.temp_min.toFixed()}º</p>
         </div>
       </section>
-      <section className="flex flex-col">
+      <section className="mt-5 flex flex-col gap-2">
         <Link
           href={appendCompareParam('a', city)}
           className="self-end hover:opacity-90"
         >
           Compare
         </Link>
-        <div className="bg-gray-700">Forcast</div>
+        <div className="flex flex-col gap-5">
+          <SingleCityForecast />
+          <WindSunHumidity />
+        </div>
       </section>
     </div>
   );

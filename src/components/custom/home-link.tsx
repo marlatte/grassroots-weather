@@ -4,9 +4,9 @@ export default function HomeLink() {
   return (
     <Link
       href="/"
-      className="block text-3xl font-semibold hover:opacity-90 sm:text-4xl"
+      className="block bg-gradient-to-t from-blue-300 to-blue-50 bg-clip-text text-3xl font-semibold text-transparent hover:opacity-90 sm:text-4xl"
     >
-      Weather
+      ClimaCast
     </Link>
   );
 }
