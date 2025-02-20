@@ -34,7 +34,7 @@ export default function SearchBar() {
           autoComplete="off"
           value={query}
           className=""
-          inputClassName="border-0 bg-transparent"
+          inputClassName="border-0 bg-transparent rounded-r-none"
           onChange={(e) => {
             handleQueryChange(e.target.value);
           }}
@@ -60,6 +60,7 @@ export default function SearchBar() {
                 onClick={() => {
                   setQuery(suggestion);
                   // ? Can return focus to input after clicking dropdown item?
+                  // ? Can move through dropdown with up/down arrows?
                 }}
               >
                 {suggestion}

@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Params }) {
   // https://openweathermap.org/weather-conditions
 
   return (
-    <div className="flex flex-col items-center gap-5 text-xl">
+    <div className="flex w-[min(100%,_750px)] flex-col items-center gap-5 self-center text-xl">
       <div className="flex items-center justify-between self-stretch">
         <BackBtn />
         <AddOrRemove city={data.name} />

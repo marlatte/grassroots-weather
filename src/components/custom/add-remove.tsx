@@ -14,7 +14,7 @@ function AddCity({
   return (
     <button
       type="button"
-      className="rounded-full bg-blue-800"
+      className="rounded-full bg-blue-800 hover:bg-blue-700"
       value={city}
       {...{ onClick }}
     >
@@ -32,7 +32,11 @@ function RemoveCity({
   onClick: React.MouseEventHandler;
 }) {
   return (
-    <button type="button" className="rounded-full bg-red-800" {...{ onClick }}>
+    <button
+      type="button"
+      className="rounded-full bg-red-800 hover:bg-red-700"
+      {...{ onClick }}
+    >
       <span className="sr-only">Remove {city} from Home</span>
       <Dash className="size-10" />
     </button>
