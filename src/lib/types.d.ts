@@ -20,7 +20,7 @@ type OpenWeatherCurrent = {
     grnd_level: number;
   };
   visibility: number;
-  wind: { speed: number; deg: number };
+  wind: { speed: number; deg: number; gust?: number };
   clouds: { all: number };
   dt: number;
   sys: {

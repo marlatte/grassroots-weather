@@ -24,11 +24,11 @@ export default function CityCard({
 
   return (
     <Card
-      className="flex h-32 flex-col justify-between p-4 text-base hover:bg-gray-900 focus:bg-gray-900"
+      className="flex min-h-32 flex-col justify-between gap-2 p-4 text-base hover:bg-gray-900 focus:bg-gray-900"
       asChild
     >
       <Link href={getWeatherLink(name)}>
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-2">
           <div>
             <p className="mb-0.5 text-2xl font-semibold">{name}</p>
             <p className="opacity-90">{localTime}</p>
