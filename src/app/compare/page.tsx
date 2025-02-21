@@ -1,10 +1,8 @@
 import BackBtn from '@/components/custom/back-btn';
 import CompareAddCity from '@/components/custom/compare-add';
 import CompareCard from '@/components/custom/compare-card';
-import MultiCityForecast from '@/components/custom/forecasts/muli-city';
+import MultiCityWrapper from '@/components/custom/forecasts/multi-city-wrapper';
 import HomeLink from '@/components/custom/home-link';
-import { Card } from '@/components/tremor/Card';
-import { Calendar3, Geo } from 'react-bootstrap-icons';
 
 type SearchParams = { [key: string]: string | undefined };
 
@@ -121,30 +119,11 @@ export default async function Page({
         </div>
       </section>
       <section>
-        <Card className="col-span-2 flex min-h-96 flex-col p-4">
-          <div className="flex justify-between dark:text-gray-300">
-            <h2 className="text-lg">5-Day Forecast</h2>
-            <Calendar3 className="size-6" />
-          </div>
-          {!!dataA.forecast?.list ? (
-            <MultiCityForecast
-              forecastListA={dataA.forecast?.list}
-              forecastListB={dataB.forecast?.list}
-              timezoneOffsetA={dataA.forecast!.city.timezone}
-              nameA={dataA.forecast?.city.name}
-              nameB={dataB.forecast?.city.name}
-            />
-          ) : (
-            <div className="grid flex-1 place-content-center gap-4 text-pretty text-center text-xl text-gray-700 dark:text-gray-300">
-              <div className="flex justify-center">
-                <Geo className="size-8" />
-              </div>
-              <p>Pick a primary city to compare against.</p>
-            </div>
-          )}
-        </Card>
+        <MultiCityWrapper
+          forecastA={dataA.forecast}
+          forecastB={dataB.forecast}
+        />
       </section>
-      <section></section>
     </div>
   );
 }

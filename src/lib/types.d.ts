@@ -37,6 +37,7 @@ type OpenWeatherCurrent = {
 };
 
 type CompareParam = 'a' | 'b';
+type Comparison = 'temp' | 'humidity' | 'feels_like';
 
 type ForecastListItem = {
   dt: number;
