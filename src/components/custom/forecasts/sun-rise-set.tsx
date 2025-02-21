@@ -1,10 +1,7 @@
 import { Card } from '@/components/tremor/Card';
 import { CategoryBar } from '@/components/tremor/CategoryBar';
-import dayjs, { Dayjs } from 'dayjs';
-import utc from 'dayjs/plugin/utc';
+import { getHourRounded, getLocalDjs } from '@/lib/date-utils';
 import { Sunrise, Sunset } from 'react-bootstrap-icons';
-
-dayjs.extend(utc);
 
 export default function SunRiseAndSet({
   sunriseUnix,
@@ -17,21 +14,14 @@ export default function SunRiseAndSet({
 }) {
   // Round to the nearest hour because Tremor's CategoryBar displays floats, not times
   // TODO: Modify tremor component to handle minutes instead of just numbers
-  function getHourRounded(timeDjs: Dayjs) {
-    return Math.round(+(timeDjs.minute() / 60).toFixed(2) + timeDjs.hour());
-  }
 
-  function getLocalDjs(epochMilSec?: number) {
-    return dayjs.utc(epochMilSec).add(timezoneOffset, 'seconds');
-  }
-
-  const sunriseDjs = getLocalDjs(sunriseUnix * 1000);
+  const sunriseDjs = getLocalDjs(timezoneOffset, sunriseUnix * 1000);
   const sunriseHourRounded = getHourRounded(sunriseDjs);
 
-  const sunsetDjs = getLocalDjs(sunsetUnix * 1000);
+  const sunsetDjs = getLocalDjs(timezoneOffset, sunsetUnix * 1000);
   const sunsetHourRounded = getHourRounded(sunsetDjs);
 
-  const nowDjs = getLocalDjs();
+  const nowDjs = getLocalDjs(timezoneOffset);
   const nowHourRounded = getHourRounded(nowDjs);
 
   const daylightInterval = sunsetHourRounded - sunriseHourRounded;

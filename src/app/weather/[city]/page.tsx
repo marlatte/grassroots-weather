@@ -21,18 +21,32 @@ export async function generateMetadata({ params }: { params: Params }) {
 export default async function Page({ params }: { params: Params }) {
   const { city } = params;
   const apiKey = process.env.OPEN_WEATHER_API_KEY;
-  const res = await fetch(
+
+  const resCurrent = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`,
   );
-  if (!res.ok) {
-    if (res.status === 404) {
+  if (!resCurrent.ok) {
+    if (resCurrent.status === 404) {
       notFound();
     } else {
-      throw new Error(`${res.status}: ${await res.text()}`);
+      throw new Error(`${resCurrent.status}: ${await resCurrent.text()}`);
     }
   }
 
-  const currentData: OpenWeatherCurrent = await res.json();
+  const currentData: OpenWeatherCurrent = await resCurrent.json();
+
+  const resForecast = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`,
+  );
+  if (!resForecast.ok) {
+    if (resForecast.status === 404) {
+      notFound();
+    } else {
+      throw new Error(`${resForecast.status}: ${await resForecast.text()}`);
+    }
+  }
+
+  const forecastData: ForecastResponse = await resForecast.json();
 
   // Find more assets (icons, etc.) for the UI here:
   // https://openweathermap.org/weather-conditions
@@ -67,7 +81,10 @@ export default async function Page({ params }: { params: Params }) {
           Compare
         </Link>
         <div className="flex flex-col gap-5">
-          <SingleCityForecast />
+          <SingleCityForecast
+            forecastList={forecastData.list}
+            timezoneOffset={forecastData.city.timezone}
+          />
           <CurrentStats data={currentData} />
         </div>
       </section>
