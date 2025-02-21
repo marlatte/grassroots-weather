@@ -11,8 +11,10 @@ import { appendCompareParam, getWeatherLink } from '@/lib/link-utils';
 
 export default function SearchBar({
   compareParam,
+  disabled,
 }: {
   compareParam?: CompareParam;
+  disabled?: boolean;
 }) {
   const [dropdownList, setDropdownList] = useState<string[]>([]);
   const [query, setQuery] = useState('');
@@ -43,7 +45,7 @@ export default function SearchBar({
           type="search"
           autoComplete="off"
           value={query}
-          className=""
+          {...{ disabled }}
           inputClassName="border-0 bg-transparent rounded-r-none"
           onChange={(e) => {
             handleQueryChange(e.target.value);

@@ -30,6 +30,7 @@ export default async function Page({
     );
     if (!currentResA.ok) {
       if (currentResA.status === 404) {
+        //  TODO: Add better error handling
       } else {
         throw new Error(`${currentResA.status}: ${await currentResA.text()}`);
       }
@@ -41,6 +42,7 @@ export default async function Page({
     );
     if (!forecastResA.ok) {
       if (forecastResA.status === 404) {
+        //  TODO: Add better error handling
       } else {
         throw new Error(`${forecastResA.status}: ${await forecastResA.text()}`);
       }
@@ -54,6 +56,7 @@ export default async function Page({
     );
     if (!currentResB.ok) {
       if (currentResB.status === 404) {
+        //  TODO: Add better error handling
       } else {
         throw new Error(`${currentResB.status}: ${await currentResB.text()}`);
       }
@@ -65,6 +68,7 @@ export default async function Page({
     );
     if (!forecastResB.ok) {
       if (forecastResB.status === 404) {
+        //  TODO: Add better error handling
       } else {
         throw new Error(`${forecastResB.status}: ${await forecastResB.text()}`);
       }
@@ -73,46 +77,50 @@ export default async function Page({
   }
 
   return (
-    <div className="w-[min(100%,_750px)] self-center">
-      <section className="flex flex-col items-center gap-5">
+    <div className="flex w-[min(100%,_750px)] flex-col gap-10 self-center">
+      <section className="flex flex-col gap-5">
         <div className="mb-2 flex items-center justify-between self-stretch">
           <BackBtn />
           <HomeLink />
           <div className="size-9" />
         </div>
-        {dataA.current ? (
-          <CompareCard
-            name={dataA.current.name}
-            temp={dataA.current.main.temp}
-            conditions={dataA.current.weather[0].main}
-            high={dataA.current.main.temp_max}
-            low={dataA.current.main.temp_min}
-            secFromUTC={dataA.current.timezone}
-            compareParam="a"
-            className="bg-blue-600 text-blue-100 hover:bg-blue-900 dark:bg-blue-950"
-          />
-        ) : (
-          <CompareAddCity compareParam="a" />
-        )}
-        {dataB.current ? (
-          <>
-            <p className="text-2xl">vs.</p>
-            <CompareCard
-              name={dataB.current.name}
-              temp={dataB.current.main.temp}
-              conditions={dataB.current.weather[0].main}
-              high={dataB.current.main.temp_max}
-              low={dataB.current.main.temp_min}
-              secFromUTC={dataB.current.timezone}
-              compareParam="b"
-              className="bg-red-600 text-red-100 hover:bg-red-900 dark:bg-red-950"
-            />
-          </>
-        ) : (
-          <CompareAddCity compareParam="b" disabled={!dataA.current} />
-        )}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-9">
+          <div className="flex sm:col-span-4">
+            {dataA.current ? (
+              <CompareCard
+                name={dataA.current.name}
+                temp={dataA.current.main.temp}
+                conditions={dataA.current.weather[0].main}
+                high={dataA.current.main.temp_max}
+                low={dataA.current.main.temp_min}
+                secFromUTC={dataA.current.timezone}
+                compareParam="a"
+                className="bg-blue-600 text-blue-100 hover:bg-blue-900 dark:bg-blue-950"
+              />
+            ) : (
+              <CompareAddCity compareParam="a" />
+            )}
+          </div>
+          <p className="grid place-content-center text-center text-2xl">vs.</p>
+          <div className="flex sm:col-span-4">
+            {dataB.current ? (
+              <CompareCard
+                name={dataB.current.name}
+                temp={dataB.current.main.temp}
+                conditions={dataB.current.weather[0].main}
+                high={dataB.current.main.temp_max}
+                low={dataB.current.main.temp_min}
+                secFromUTC={dataB.current.timezone}
+                compareParam="b"
+                className="bg-red-600 text-red-100 hover:bg-red-900 dark:bg-red-950"
+              />
+            ) : (
+              <CompareAddCity compareParam="b" disabled={!dataA.current} />
+            )}
+          </div>
+        </div>
       </section>
-      <section className="mt-10">
+      <section>
         <Card className="col-span-2 flex min-h-96 flex-col p-4">
           <div className="flex justify-between dark:text-gray-300">
             <h2 className="text-lg">5-Day Forecast</h2>
@@ -136,6 +144,7 @@ export default async function Page({
           )}
         </Card>
       </section>
+      <section></section>
     </div>
   );
 }
