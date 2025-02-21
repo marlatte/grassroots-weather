@@ -35,7 +35,7 @@ export default function CompareCard({
   return (
     <Card
       className={cx(
-        'flex h-32 flex-col justify-between p-4 text-base hover:bg-gray-900',
+        'flex min-h-32 flex-col justify-between gap-2 p-4 text-base hover:bg-gray-900',
         className,
       )}
       asChild

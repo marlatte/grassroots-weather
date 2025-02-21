@@ -22,6 +22,12 @@ export const chartColors = {
     fill: 'fill-emerald-500',
     text: 'text-emerald-500',
   },
+  lime: {
+    bg: 'bg-lime-500',
+    stroke: 'stroke-lime-500',
+    fill: 'fill-lime-500',
+    text: 'text-lime-500',
+  },
   violet: {
     bg: 'bg-violet-500',
     stroke: 'stroke-violet-500',
@@ -70,11 +76,17 @@ export const chartColors = {
     fill: 'fill-pink-500',
     text: 'text-pink-500',
   },
-  lime: {
-    bg: 'bg-lime-500',
-    stroke: 'stroke-lime-500',
-    fill: 'fill-lime-500',
-    text: 'text-lime-500',
+  red: {
+    bg: 'bg-red-600',
+    stroke: 'stroke-red-600',
+    fill: 'fill-red-600',
+    text: 'text-red-600',
+  },
+  red_dark: {
+    bg: 'bg-red-800',
+    stroke: 'stroke-red-800',
+    fill: 'fill-red-800',
+    text: 'text-red-800',
   },
   fuchsia: {
     bg: 'bg-fuchsia-500',
