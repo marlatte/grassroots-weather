@@ -58,20 +58,20 @@ export default function WindStats({
         <div className="relative grid w-32 place-content-center">
           <div className="wind-compass size-28 rounded-full" />
           <div className="absolute grid size-full place-content-center">
-            <div className="size-[100px] rounded-full bg-[#090E1A]" />
+            <div className="size-[100px] rounded-full bg-white dark:bg-[#090E1A]" />
           </div>
           <div className="absolute grid size-full place-content-center">
             <div
               className="relative flex h-28 flex-col items-center"
               style={{ rotate: `${degRounded}deg` }}
             >
-              <div className="size-2 rounded-full ring-2 ring-gray-300" />
-              <div className="w-0.5 flex-1 rounded-full bg-gray-300" />
-              <ChevronDown className="absolute -bottom-3 size-8 shrink-0 text-gray-300" />
+              <div className="size-2 rounded-full ring-2 ring-gray-500 dark:ring-gray-300" />
+              <div className="w-0.5 flex-1 rounded-full bg-gray-500 dark:bg-gray-300" />
+              <ChevronDown className="absolute -bottom-3 size-8 shrink-0 text-gray-500 dark:text-gray-300" />
             </div>
           </div>
           <div className="absolute grid size-full place-content-center">
-            <div className="grid size-[50px] place-content-center rounded-full bg-[#090E1A] text-center text-2xl font-semibold">
+            <div className="grid size-[50px] place-content-center rounded-full bg-white text-center text-2xl font-semibold dark:bg-[#090E1A]">
               {letterCode}
             </div>
           </div>

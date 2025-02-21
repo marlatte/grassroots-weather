@@ -12,7 +12,10 @@ export default function Home() {
       <div>
         <SearchBar />
         <div className="mt-2 flex justify-end">
-          <Link href="/compare" className="hover:opacity-90">
+          <Link
+            href="/compare"
+            className="underline-offset-2 hover:underline hover:opacity-90"
+          >
             Compare Cities
           </Link>
         </div>

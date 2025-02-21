@@ -58,7 +58,7 @@ export default async function Page({
             low={dataA.main.temp_min}
             secFromUTC={dataA.timezone}
             compareParam="a"
-            className="hover:bg-blue-900 dark:bg-blue-950 dark:text-blue-100"
+            className="bg-blue-600 text-blue-100 hover:bg-blue-900 dark:bg-blue-950"
           />
         ) : (
           <CompareAddCity compareParam="a" />
@@ -74,7 +74,7 @@ export default async function Page({
               low={dataB.main.temp_min}
               secFromUTC={dataB.timezone}
               compareParam="b"
-              className="hover:bg-red-900 dark:bg-red-950 dark:text-red-100"
+              className="bg-red-600 text-red-100 hover:bg-red-900 dark:bg-red-950"
             />
           </>
         ) : (

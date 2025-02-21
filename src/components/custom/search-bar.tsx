@@ -32,7 +32,7 @@ export default function SearchBar({
             : getWeatherLink(query),
         );
       }}
-      className="relative flex rounded-lg border border-gray-800"
+      className="relative flex rounded-lg border bg-white dark:border-gray-800"
     >
       <Label htmlFor="search" className="flex-1">
         <span className="sr-only">Search</span>
@@ -61,12 +61,12 @@ export default function SearchBar({
       </Button>
       {!!dropdownList.length && !dropdownList.includes(query) && (
         <div className="absolute top-12 z-10 w-full pl-8">
-          <div className="flex flex-col rounded-lg rounded-tl-none border border-gray-800 bg-gray-900 px-1 py-2 text-gray-300">
+          <div className="flex flex-col rounded-lg rounded-tl-none border bg-gray-50 px-1 py-2 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
             {dropdownList.map((suggestion) => (
               <button
                 type="button"
                 key={suggestion}
-                className="rounded p-2 text-start hover:bg-gray-800/70 hover:text-gray-200"
+                className="rounded p-2 text-start hover:bg-gray-200/70 hover:dark:bg-gray-800/70 hover:dark:text-gray-200"
                 onClick={() => {
                   setQuery(suggestion);
                   // ? Can return focus to input after clicking dropdown item?

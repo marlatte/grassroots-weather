@@ -14,7 +14,7 @@ function AddCity({
   return (
     <button
       type="button"
-      className="rounded-full bg-blue-900 hover:bg-blue-800"
+      className="rounded-full bg-blue-900 text-slate-50 hover:bg-blue-800"
       value={city}
       {...{ onClick }}
     >
@@ -34,7 +34,7 @@ function RemoveCity({
   return (
     <button
       type="button"
-      className="rounded-full bg-red-900 hover:bg-red-800"
+      className="rounded-full bg-red-900 text-slate-50 hover:bg-red-800"
       {...{ onClick }}
     >
       <span className="sr-only">Remove {city} from Home</span>

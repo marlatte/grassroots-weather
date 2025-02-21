@@ -6,9 +6,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.wind-compass {
-  --compass-ticks: theme(colors.gray.600);
+@media (prefers-color-scheme: dark) {
+  .wind-compass {
+    --compass-ticks: theme(colors.gray.600);
+  }
+}
 
+@media (prefers-color-scheme: light) {
+  .wind-compass {
+    --compass-ticks: theme(colors.gray.300);
+  }
+}
+
+.wind-compass {
   background: repeating-conic-gradient(
     at center,
     var(--compass-ticks) 0deg 4deg,

@@ -55,7 +55,7 @@ export default function CitiesList() {
       ) : (
         <div className="grid flex-1 place-content-center gap-3 pb-52">
           <div className="flex animate-bounce justify-center">
-            <ArrowUpCircle className="size-10 text-gray-300" />
+            <ArrowUpCircle className="size-10 text-slate-600 dark:text-gray-300" />
           </div>
           <p className="text-balance text-lg sm:text-xl">
             Add a city by searching for it.

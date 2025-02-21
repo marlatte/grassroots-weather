@@ -24,7 +24,7 @@ export default function CityCard({
 
   return (
     <Card
-      className="flex min-h-32 flex-col justify-between gap-2 p-4 text-base hover:bg-gray-900 focus:bg-gray-900"
+      className="flex min-h-32 flex-col justify-between gap-2 p-4 text-base hover:bg-gray-50 focus:bg-gray-50 hover:dark:bg-gray-900 focus:dark:bg-gray-900"
       asChild
     >
       <Link href={getWeatherLink(name)}>

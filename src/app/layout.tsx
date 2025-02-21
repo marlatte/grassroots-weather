@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="bg-blue-100 text-slate-950 dark:bg-slate-950 dark:text-slate-50"
+      className="bg-blue-50 text-slate-950 dark:bg-slate-950 dark:text-slate-50"
     >
       <body className={`${inter.className} flex h-dvh flex-col antialiased`}>
         <main className="flex flex-1 flex-col p-5 pt-7">{children}</main>
