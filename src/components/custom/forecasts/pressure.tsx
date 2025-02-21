@@ -1,20 +1,45 @@
 import { Card } from '@/components/tremor/Card';
+import { DonutChart } from '@/components/tremor/DonutChart';
 import { CloudArrowDown } from 'react-bootstrap-icons';
 
 export default function Pressure({ pressure }: { pressure: number }) {
-  // Low: 980
-  // High: 1040
-  // Mid: 1010
+  // Low: 980 => 0
+  // Mid: 1010 => 30
+  // High: 1040 => 60
+  const high = 1040;
+  const low = 980;
+  const range = high - low;
+  const pressureAdj = pressure - low;
 
+  const data = [
+    { key: 'blue', value: pressureAdj },
+    { key: 'gray', value: range - pressureAdj },
+    { key: 'transparent', value: 40 },
+  ];
   return (
     <Card className="flex flex-col p-4">
       <div className="flex items-center justify-between dark:text-gray-300">
         <h2 className="text-lg">Pressure</h2>
         <CloudArrowDown className="hidden size-5 min-[360px]:block" />
       </div>
-      <p className="flex flex-1 flex-col justify-center text-3xl font-semibold">
-        {Math.round(pressure)} <span className="text-2xl font-light">hPa</span>
-      </p>
+      <div className="relative overflow-hidden">
+        <DonutChart
+          data={data}
+          category="key"
+          value="value"
+          colors={['cyan', 'gray', 'transparent']}
+          className="relative top-[14px] h-min w-full -rotate-[107deg]"
+          chartClassName="stroke-transparent dark:stroke-transparent"
+        />
+        <div className="absolute bottom-0 grid h-1/2 w-full place-content-center">
+          <div className="text-center">
+            <p className="text-xl font-semibold min-[360px]:text-2xl">
+              {pressure}
+            </p>
+            <p>hPa</p>
+          </div>
+        </div>
+      </div>
     </Card>
   );
 }

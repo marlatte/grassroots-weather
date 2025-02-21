@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <div className="w-[min(100%,_750px)] self-center">
-      <section className="flex flex-col items-center gap-5 text-xl">
+      <section className="flex flex-col items-center gap-5 text-center text-xl">
         <div className="mb-6 flex items-center justify-between self-stretch">
           <BackBtn />
           <HomeLink />

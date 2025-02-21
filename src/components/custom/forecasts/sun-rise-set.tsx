@@ -37,7 +37,7 @@ export default function SunRiseAndSet({
   const daylightInterval = sunsetHourRounded - sunriseHourRounded;
 
   return (
-    <Card className="flex h-40 flex-col p-4">
+    <Card className="col-span-2 flex min-h-40 flex-col p-4">
       <div className="flex justify-between dark:text-gray-300">
         <h2 className="text-lg">Sunrise & Sunset</h2>
         {nowHourRounded < 12 ? (

@@ -168,6 +168,7 @@ interface DonutChartProps extends React.HTMLAttributes<HTMLDivElement> {
   onValueChange?: (value: DonutChartEventProps) => void;
   tooltipCallback?: (tooltipCallbackContent: TooltipProps) => void;
   customTooltip?: React.ComponentType<TooltipProps>;
+  chartClassName?: string;
 }
 
 const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
@@ -186,6 +187,7 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
       tooltipCallback,
       customTooltip,
       className,
+      chartClassName,
       ...other
     },
     forwardedRef,
@@ -263,6 +265,7 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
               className={cx(
                 'stroke-white dark:stroke-gray-950 [&_.recharts-pie-sector]:outline-none',
                 onValueChange ? 'cursor-pointer' : 'cursor-default',
+                chartClassName,
               )}
               data={parseData(data, categoryColors, category)}
               cx="50%"
