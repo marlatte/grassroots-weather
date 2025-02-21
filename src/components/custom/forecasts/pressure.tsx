@@ -9,11 +9,17 @@ export default function Pressure({ pressure }: { pressure: number }) {
   const high = 1040;
   const low = 980;
   const range = high - low;
-  const pressureAdj = pressure - low;
+
+  let pressureAdj: number;
+  if (pressure > high) pressureAdj = high;
+  else if (pressure < low) pressureAdj = low;
+  else pressureAdj = pressure;
+
+  const pressureRatio = pressureAdj - low;
 
   const data = [
-    { key: 'blue', value: pressureAdj },
-    { key: 'gray', value: range - pressureAdj },
+    { key: 'blue', value: pressureRatio },
+    { key: 'gray', value: range - pressureRatio },
     { key: 'transparent', value: 40 },
   ];
   return (
