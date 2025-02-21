@@ -1,11 +1,11 @@
 'use client';
 
-import { Input } from '@/components/tremor/input';
-import { Label } from '@/components/tremor/label';
+import { Input } from '@/components/tremor/Input';
+import { Label } from '@/components/tremor/Label';
 import { searchCities } from '@/db/mock-db';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { Button } from '../tremor/button';
+import { Button } from '../tremor/Button';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { appendCompareParam, getWeatherLink } from '@/lib/link-utils';
 

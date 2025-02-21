@@ -1,4 +1,4 @@
-import { Card } from '@/components/tremor/card';
+import { Card } from '@/components/tremor/Card';
 import { CloudArrowDown } from 'react-bootstrap-icons';
 
 export default function Pressure({ pressure }: { pressure: number }) {

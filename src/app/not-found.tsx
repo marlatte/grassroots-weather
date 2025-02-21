@@ -1,5 +1,5 @@
-import { Button } from '@/components/tremor/button';
-import { Card } from '@/components/tremor/card';
+import { Button } from '@/components/tremor/Button';
+import { Card } from '@/components/tremor/Card';
 import Link from 'next/link';
 
 export default function NotFound() {

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/tremor/button';
+import { Button } from '@/components/tremor/Button';
 import { useEffect } from 'react';
 
 export default function Error({

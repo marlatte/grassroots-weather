@@ -1,5 +1,5 @@
 import type { Dayjs } from 'dayjs';
-import { Card } from '../tremor/card';
+import { Card } from '../tremor/Card';
 import Link from 'next/link';
 import { getWeatherLink } from '@/lib/link-utils';
 

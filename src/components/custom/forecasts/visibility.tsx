@@ -1,4 +1,4 @@
-import { Card } from '@/components/tremor/card';
+import { Card } from '@/components/tremor/Card';
 import { Eye } from 'react-bootstrap-icons';
 
 export default function Visibility({

@@ -1,7 +1,7 @@
 'use client';
 
 import { cx } from '@/lib/tremorUtils';
-import { Card } from '../tremor/card';
+import { Card } from '../tremor/Card';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { useRouter, useSearchParams } from 'next/navigation';

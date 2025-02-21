@@ -1,4 +1,4 @@
-import { Card } from '@/components/tremor/card';
+import { Card } from '@/components/tremor/Card';
 import { CategoryBar } from '@/components/tremor/CategoryBar';
 import dayjs, { Dayjs } from 'dayjs';
 import utc from 'dayjs/plugin/utc';

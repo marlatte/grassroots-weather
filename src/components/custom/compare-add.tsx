@@ -1,7 +1,7 @@
 'use client';
 
 import { Plus } from 'react-bootstrap-icons';
-import { Button } from '../tremor/button';
+import { Button } from '../tremor/Button';
 import { useState } from 'react';
 import SearchBar from './search-bar';
 
