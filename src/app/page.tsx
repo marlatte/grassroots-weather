@@ -2,6 +2,7 @@ import HomeLink from '@/components/custom/home-link';
 import CitiesList from '../components/custom/cities-list';
 import SearchBar from '../components/custom/search-bar';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
@@ -10,7 +11,9 @@ export default function Home() {
         <HomeLink />
       </div>
       <div>
-        <SearchBar />
+        <Suspense>
+          <SearchBar />
+        </Suspense>
         <div className="mt-2 flex justify-end">
           <Link
             href="/compare"
