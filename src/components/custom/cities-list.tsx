@@ -3,9 +3,9 @@
 import useLocalStorage from 'use-local-storage';
 import CityCard from './city-card';
 import { useEffect, useState } from 'react';
+import { ArrowUpCircle } from 'react-bootstrap-icons';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { ArrowUpCircle } from 'react-bootstrap-icons';
 
 dayjs.extend(utc);
 
