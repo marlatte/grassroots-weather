@@ -34,6 +34,7 @@ export default function Pressure({ pressure }: { pressure: number }) {
           category="key"
           value="value"
           colors={['cyan', 'gray', 'transparent']}
+          showTooltip={false}
           className="relative top-[14px] h-min w-full -rotate-[107deg]"
           chartClassName="stroke-transparent dark:stroke-transparent"
         />

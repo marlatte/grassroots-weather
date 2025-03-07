@@ -19,13 +19,13 @@ export default function SingleCityForecast({
     };
   });
   return (
-    <Card className="col-span-2 flex min-h-40 flex-col p-4">
-      <div className="flex justify-between dark:text-gray-300">
+    <Card className="col-span-2 flex min-h-40 flex-col py-4 pl-0 pr-4">
+      <div className="flex justify-between pl-4 dark:text-gray-300">
         <h2 className="text-lg">5-Day Forecast</h2>
         <Calendar3 className="size-6" />
       </div>
       <AreaChart
-        className="p-1 pt-5"
+        className="pt-5"
         data={data}
         index="time"
         categories={['temp']}
