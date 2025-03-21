@@ -1,6 +1,12 @@
 # Grassroots Weather
 
-A beautiful web app for checking the weather. Created while interviewing with Grassroots Analytics.
+Built as part of a challenge, I finished this browser-based weather app in just 2.5 days.
+
+I used:
+- Next.js to scaffold it quickly
+- TypeScript to keep it bug-free
+- Tremor to graph data
+- Tailwind to give it a consistent style. 
 
 ## Install
 
